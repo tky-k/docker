@@ -1,0 +1,55 @@
+version: "3"
+
+services:
+#  local-mysql:
+#    build: 
+#      context: .
+#      dockerfile: ./mysql_Dockerfile
+#    ports:
+#      - "3306:3306"
+#    container_name:
+#      rails-mysql
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=mysql
+    
+  local-redis:
+    image: redis
+#    ports:
+#      - "6379:6379"
+    container_name:
+      rails-redis
+  
+  local-rails:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+#      - local-mysql
+      - local-redis
+#      - local-nginx
+    env_file:
+      - env_file.env
+    container_name:
+      rails-rails
+    command:
+      bundle exec rails s -b 0.0.0.0
+
+  
+#  local-nginx:
+#    image: nginx
+#    build: 
+#      context: .
+#      dockerfile: nginx_Dockerfile
+#    ports:
+#      - "8080:80"
+#    container_name:
+#      rails-nginx
+
+#networks: 
+#  local-rails_network:
+#    driver: bridge
+#    ipam:
+#      driver: default
+#      config:
+#        - subnet: 172.16.238.0/24
+#          gateway: 172.16.238.1
