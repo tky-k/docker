@@ -2,16 +2,18 @@ version: "3.3"
 
 services:
   docker-tag1:
-    image: test_tag:1.0
+    image: ${IMAGE_ID}
     networks:
       - docker-tag-network
     tty: true
+    privileged: true
 
   docker-tag2:
-    image: test_tag:1.0
+    image: ${IMAGE_ID}
     networks:
       - docker-tag-network
     tty: true
+    privileged: true
   
   docker-tag-rep:
     image: registry
