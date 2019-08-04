@@ -7,3 +7,4 @@
 .DS_Store
 command_memo.txt
 nginx.conf
+docker_tag_test/errormessage.txt

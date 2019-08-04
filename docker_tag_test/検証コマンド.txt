@@ -1,0 +1,37 @@
+docker-compose -f docker-compose-dind.yml up -d
+#tag1での作業
+docker exec -it tag1 /bin/sh
+docker run --rm --name alpine_tag_test -itd alpine 
+docker exec -it alpine_tag_test /bin/sh
+#/tmp/welcome.txtを作成し終了
+echo 'welcome to tag test' > /tmp/welcome.txt
+#イメージのコミット
+docker commit コンテナID 
+docker tag イメージID takuyakawaguchi/custom_alpine:latest
+#DockerHubへのログイン
+docker login
+#DockerHubへのpush
+docker push takuyakawaguchi/custom_alpine:latest
+#tag2での作業
+docker exec -it tag2 /bin/sh
+docker run --rm --name alpine_tag_test2 -itd takuyakawaguchi/custom_alpine:latest
+docker images
+docker stop alpine_tag_test2
+#tag1での作業
+docker exec -it tag1 /bin/sh
+docker tag イメージID takuyakawaguchi/custom_alpine:1.0
+#tag1.0を作成
+docker push takuyakawaguchi/custom_alpine:1.0
+#イメージの更新
+docker exec -it alpine_tag_test /bin/sh
+#/tmp/welcome2.txtを作成し終了
+echo 'welcome to tag test' > /tmp/welcome2.txt
+#コミット
+docker commit e99b6dd8c9b8 
+docker tag 865c110b6913 takuyakawaguchi/custom_alpine:latest
+docker push takuyakawaguchi/custom_alpine:latest
+#tag2での作業
+docker exec -it tag2 /bin/sh
+docker run --rm --name alpine_tag_test2 -itd takuyakawaguchi/custom_alpine:latest
+docker exec -it alpine_tag_test2 /bin/sh
+#このイメージには/tmp/welcome2.txtが存在しない。Dockerは標準ではイメージの更新はチェックしない

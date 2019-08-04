@@ -2,27 +2,31 @@ version: "3.3"
 
 services:
   docker-tag1:
-    image: ${IMAGE_ID}
+    image: docker:stable-dind
     container_name: tag1
     networks:
       - docker-tag-network
     tty: true
     privileged: true
+    # environment:
+    #   - DOCKER_HOST=tcp://repo:5000
 
   docker-tag2:
-    image: ${IMAGE_ID}
+    image: docker:stable-dind
     container_name: tag2
     networks:
       - docker-tag-network
     tty: true
     privileged: true
+    # environment:
+    #   - DOCKER_HOST=tcp://repo:5000
   
-  docker-tag-rep:
-    image: registry
-    container_name: repo
-    networks:
-      - docker-tag-network
-    tty: true
+  # docker-tag-rep:
+  #   image: registry
+  #   container_name: repo
+  #   networks:
+  #     - docker-tag-network
+  #   tty: true
 
 networks:
   docker-tag-network:
