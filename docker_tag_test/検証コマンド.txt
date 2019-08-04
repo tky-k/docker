@@ -27,7 +27,7 @@ docker exec -it alpine_tag_test /bin/sh
 #/tmp/welcome2.txtを作成し終了
 echo 'welcome to tag test' > /tmp/welcome2.txt
 #コミット
-docker commit e99b6dd8c9b8 
+docker commit コンテナID 
 docker tag 865c110b6913 takuyakawaguchi/custom_alpine:latest
 docker push takuyakawaguchi/custom_alpine:latest
 #tag2での作業
