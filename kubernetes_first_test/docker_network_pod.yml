@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: docker-network-pod
+  labels:
+    name: docker-network
+spec:
+  containers:
+  - name: docker-network-tomcat
+    image: tomcat
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+  - name: docker-network-nginx
+    image: takuyakawaguchi/docker_network_sample:1.0
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 9000
+
