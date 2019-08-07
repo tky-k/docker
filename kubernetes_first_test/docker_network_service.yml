@@ -6,5 +6,7 @@ spec:
   selector:
     app: docker-network
   ports:
-  - port: 8080
-    targetPort: 8080
+  - name: http
+    protocol: TCP
+    port: 3000
+    targetPort: 3000

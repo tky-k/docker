@@ -13,11 +13,12 @@ spec:
         memory: "128Mi"
         cpu: "500m"
   - name: docker-network-nginx
-    image: takuyakawaguchi/docker_network_sample:1.0
+    # image: takuyakawaguchi/docker_network_sample:1.0
+    image: kube_nginx:1.0
     resources:
       limits:
         memory: "128Mi"
         cpu: "500m"
     ports:
-      - containerPort: 9000
+      - containerPort: 3000
 
