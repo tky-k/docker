@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: docker-network-pod
   labels:
-    name: docker-network
+    app: docker-network
 spec:
   containers:
   - name: docker-network-tomcat
@@ -12,9 +12,12 @@ spec:
       limits:
         memory: "128Mi"
         cpu: "500m"
+    ports:
+      - containerPort: 8080
   - name: docker-network-nginx
     # image: takuyakawaguchi/docker_network_sample:1.0
     image: kube_nginx:1.0
+    # image: nginx
     resources:
       limits:
         memory: "128Mi"
