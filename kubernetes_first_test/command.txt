@@ -1,0 +1,18 @@
+#kubernetesサービス起動
+docker build . --no-cache -t kube_nginx:1.0
+kubectl apply -f docker_network_pod.yml
+kubectl apply -f docker_network_service.yml
+
+
+#コマンドメモ
+kubectl proxy
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
+kubectl delete -f docker_network_pod.yml
+kubectl get pod
+kubectl describe pods docker-network-pod
+kubectl logs docker-network-pod -c docker-network-nginx
+kubectl exec  -it docker-network-pod -c docker-network-nginx /bin/bash
+kubectl exec docker-network-pod -c docker-network-tomcat /bin/sh
+kubectl get service docker-network-service
+kubectl get endpoints docker-network-service
+
