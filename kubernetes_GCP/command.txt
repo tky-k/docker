@@ -3,4 +3,4 @@ gcloud config set project XXX
 #リージョンの設定
 gcloud config set compute/zone asia-northeast1-a
 #kubernetesクラスタの作成
-gcloud container clusters create kube-first --cluster-version=1.10.4-gke.2 --machine-type=n1-standart-1 --num-nodes=3
+gcloud container clusters create kube-first --cluster-version=latest --machine-type=n1-standard-1 --num-nodes=3
