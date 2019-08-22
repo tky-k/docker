@@ -4,3 +4,9 @@ gcloud config set project XXX
 gcloud config set compute/zone asia-northeast1-a
 #kubernetesクラスタの作成
 gcloud container clusters create kube-first --cluster-version=latest --machine-type=n1-standard-1 --num-nodes=3
+#クラスタの情報
+gcloud container clusters describe kube-first
+#認証情報の取得
+gcloud container clusters get-credentials kube-first
+#ノード一覧の取得
+kubectl get nodes
