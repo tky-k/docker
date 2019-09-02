@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-exsample
+
+spec:
+  accessModes:
+    - ReadWriteOnce
+  strageCDlassNmae: ssd
+  resources:
+    requests:
+      strage: 4Gi

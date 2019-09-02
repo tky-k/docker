@@ -10,3 +10,5 @@ gcloud container clusters describe kube-first
 gcloud container clusters get-credentials kube-first
 #ノード一覧の取得
 kubectl get nodes
+#Strageの作成
+kubectl apply -f strage_class.yaml
