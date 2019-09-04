@@ -12,3 +12,5 @@ gcloud container clusters get-credentials kube-first
 kubectl get nodes
 #Strageの作成
 kubectl apply -f strage_class.yaml
+#StatfulSetの作成
+kubectl apply -f mysql-master.yaml
