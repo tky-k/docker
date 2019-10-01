@@ -14,3 +14,5 @@ kubectl get nodes
 kubectl apply -f strage_class.yaml
 #StatfulSetの作成
 kubectl apply -f mysql-master.yaml
+#mysql-slaveの作成
+kubectl apply -f mysql-slave.yaml
