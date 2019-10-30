@@ -1,0 +1,11 @@
+#メモ
+docker system prune
+
+#Buildkitの有効化 環境変数によって設定
+export DOCKER_BUILDKIT=1
+
+docker container build --rm -d
+docker run -d --rm [コンテナ名]
+docker rmi [イメージID]
+
+docker build --no-cache=true . -t docker_network_sample:1.0
