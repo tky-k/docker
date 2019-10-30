@@ -8,4 +8,5 @@ docker container build --rm -d
 docker run -d --rm [コンテナ名]
 docker rmi [イメージID]
 
-docker build --no-cache=true . -t docker_network_sample:1.0
+docker build --no-cache=true . -t multi_stage_build:1.0
+docker run -itd --rm multi_stage_build:1.0
